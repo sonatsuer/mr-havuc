@@ -6,9 +6,14 @@ var enemies;
 var score;
 var topScore;
 var monsterAnimation;
+var deathSound, pointSound, boinkSound;
 
 function preload(){
   monsterAnimation = loadAnimation('assets/zombi_001.png', 'assets/zombi_006.png');
+  soundFormats('mp3');
+  deathSound = loadSound('assets/death.mp3');
+  pointSound = loadSound('assets/point.mp3');
+  boinkSound = loadSound('assets/boink.mp3');
 }
 
 function setup() {
@@ -114,6 +119,7 @@ function playGame() {
     if(enemy.overlap(walkerSprite)) {
       gameState = gameStates.LOST;
       walkerState = walkerStates.DEAD;
+      deathSound.play();
     }
   });
 
@@ -127,6 +133,7 @@ function playGame() {
   enemies = visibleEnemies;
   invisibleEnemies.forEach(sprite => {
     sprite.remove();
+    pointSound.play();
     score++;
     topScore = Math.max(topScore, score);
   });
@@ -209,5 +216,6 @@ function keyPressed() {
        walkerState === walkerStates.WALKING ) {
          walkerState = walkerStates.JUMPING;
          walkerSprite.velocity.y = -10;
+         boinkSound.play();
        }
 }
