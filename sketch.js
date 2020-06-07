@@ -21,7 +21,7 @@ function setup() {
   centerCanvas();
   gameState = gameStates.FRESH;
   walkerState = walkerStates.WALKING;
-  walkerSprite = createSprite(50, height - 110, 50, 160);
+  walkerSprite = createSprite(50, height - 110, 50, 110);
   enemies = [];
   score = 0;
   topScore = 0;
@@ -106,9 +106,9 @@ const gameStates = {
 
 function playGame() {
   // Jumping physics
-  if( walkerSprite.position.y > height - 110) {
+  if( walkerSprite.position.y > height - 90) {
       walkerState = walkerStates.WALKING;
-      walkerSprite.position.y = height - 110;
+      walkerSprite.position.y = height - 90;
       walkerSprite.velocity.y = 0;
   } else {
     walkerSprite.addSpeed(0.35, 90);
