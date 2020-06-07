@@ -2,7 +2,6 @@ var cnv;
 var walkerState;
 var walkerSprite;
 var gameState;
-var groundSprite;
 var enemies;
 var score;
 var topScore;
@@ -17,7 +16,6 @@ function setup() {
   centerCanvas();
   gameState = gameStates.FRESH;
   walkerState = walkerStates.WALKING;
-  groundSprite = createSprite(width / 2, height - 25, width, 50);
   walkerSprite = createSprite(50, height - 80, 40, 80);
   enemies = [];
   score = 0;
@@ -26,6 +24,8 @@ function setup() {
 
 function draw() {
   background(0);
+  fill(100, 0, 0);
+  rect(0, height - 50, width, 50);
   drawSprites();
   displayScore();
   switch(gameState){
