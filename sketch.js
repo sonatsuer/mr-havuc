@@ -6,6 +6,11 @@ var groundSprite;
 var enemies;
 var score;
 var topScore;
+var monsterAnimation;
+
+function preload(){
+  monsterAnimation = loadAnimation('assets/zombi_001.png', 'assets/zombi_006.png');
+}
 
 function setup() {
   cnv = createCanvas(800, 400);
@@ -134,6 +139,7 @@ function playGame() {
     ){
     var enemy = createSprite(width + 50, height - 80, 40, 40);
     enemy.velocity.x = -4;
+    enemy.addAnimation('default', monsterAnimation);
     enemies.push(enemy);
   }
 
