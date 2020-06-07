@@ -5,11 +5,14 @@ var gameState;
 var enemies;
 var score;
 var topScore;
-var monsterAnimation;
+var monsterAnimation, carrotFloatAnimation, carrotDead, carrotJump;
 var deathSound, pointSound, boinkSound;
 
 function preload(){
   monsterAnimation = loadAnimation('assets/zombi_001.png', 'assets/zombi_006.png');
+  carrotFloatAnimation = loadAnimation('assets/carrot_float_001.png', 'assets/carrot_float_004.png');
+  carrotJumpAnimation = loadAnimation('assets/carrot_jump_001.png', 'assets/carrot_jump_004.png');
+  carrotDead = loadAnimation('assets/carrot_dead.png');
   soundFormats('mp3');
   deathSound = loadSound('assets/death.mp3');
   pointSound = loadSound('assets/point.mp3');
@@ -22,6 +25,9 @@ function setup() {
   gameState = gameStates.FRESH;
   walkerState = walkerStates.WALKING;
   walkerSprite = createSprite(50, height - 110, 50, 110);
+  walkerSprite.addAnimation('float', carrotFloatAnimation);
+  walkerSprite.addAnimation('dead', carrotDead);
+  walkerSprite.addAnimation('jump', carrotJumpAnimation);
   enemies = [];
   score = 0;
   topScore = 0;
@@ -153,10 +159,13 @@ function playGame() {
   // Pick walker animation
   switch(walkerState){
     case walkerStates.WALKING:
+      walkerSprite.changeAnimation('float');
       break;
     case walkerStates.JUMPING:
+      walkerSprite.changeAnimation('jump');
       break;
     case walkerStates.DEAD:
+      walkerSprite.changeAnimation('dead');
       break;
   }
 }
