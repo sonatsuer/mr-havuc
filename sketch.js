@@ -60,9 +60,9 @@ function freshGameScreen() {
   background(0);
   textAlign(CENTER);
   fill(255);
-  text( 'Welcome to Ilgaz\'s Game!\n' +
-        'Use space bar to jump and P to pause.\n \n' +
-        'Press Enter to start.'
+  text( 'Ilgaz\'ın Oyununa Hoş Geldiniz!\n' +
+        'Zıplamak için boşluk, oyunu durdurmak için D tuşunu kullanın.\n \n' +
+        'Başlamak için Enter tuşuna basın.'
       , width / 2, height / 2);
   noLoop();
 }
@@ -71,8 +71,8 @@ function lostGameScreen() {
   background(50, 0, 0, 100);
   textAlign(CENTER);
   fill(255);
-  text( 'You died! \n' +
-        'Press Enter to restart.'
+  text( 'Öldünüz! \n' +
+        'Yeniden başlamak için Enter tuşuna basın.'
       , width / 2, height / 2);
   noLoop();
 }
@@ -81,7 +81,7 @@ function pausedGameScreen() {
   background(50, 50, 50, 150);
   textAlign(CENTER);
   fill(255);
-  text('Press P to resume', width / 2, height / 2);
+  text('Devam etmek için D tuşuna basın.', width / 2, height / 2);
   noLoop();
 }
 
@@ -170,9 +170,9 @@ function resetGame() {
 function displayScore() {
   fill(200);
   textAlign(LEFT, BOTTOM);
-  text('Score: ' + score, 10, 20);
+  text('Puan: ' + score, 10, 20);
   textAlign(RIGHT, BOTTOM);
-  text('Top score: ' + topScore, width - 10, 20)
+  text('Rekor: ' + topScore, width - 10, 20)
 }
 
 // Interactivity
@@ -191,7 +191,7 @@ function keyPressed() {
     }
   }
 
-  if (key === 'p' || key === 'P') {
+  if (key === 'd' || key === 'D') {
     switch(gameState){
       case gameStates.ONGOING:
         gameState = gameStates.PAUSED;
