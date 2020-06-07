@@ -71,7 +71,7 @@ function freshGameScreen() {
   background(0);
   textAlign(CENTER);
   fill(255);
-  text( 'Ilgaz\'ın Oyununa Hoş Geldiniz!\n' +
+  text( 'Ilgaz\'ın Mr.Havuç Zombilere Karşı Oyunu\'na Hoş Geldiniz!\n' +
         'Zıplamak için boşluk, oyunu durdurmak için D tuşunu kullanın.\n \n' +
         'Başlamak için Enter tuşuna basın.'
       , width / 2, height / 2);
